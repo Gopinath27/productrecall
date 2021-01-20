@@ -36,7 +36,7 @@ export default class LoginPage extends Component {
        const history={useHistory};
         console.log("Inside Onclick login");
         
-        var apiBaseUrl = "http://localhost:8080/";
+        var apiBaseUrl = "https://prodrecallrest.azurewebsites.net/";
         
         var payload={
         "userid":'admin',
@@ -55,15 +55,15 @@ export default class LoginPage extends Component {
         })
         .then(function (response) {
         console.log(response);
-        if(response.status === 200){
+        if(response.data === "Validation Successfull"){
         console.log("Login successfull");
         window.location.href='/login/store';
         }
-        else if(response.status === 201){
+        else if(response.data === "No User Found"){
         console.log("Username does not exists");
         alert("Username does not exists")
         }
-        else if(response.data.code === 202){
+        else if(response.data === "Enter Valid Password"){
           console.log("Username password do not match");
           alert("username password do not match")
           }
