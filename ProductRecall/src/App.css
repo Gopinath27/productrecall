@@ -36,3 +36,48 @@
     transform: rotate(360deg);
   }
 }
+#title {
+  text-align: center;
+  font-family: arial, sans-serif;
+}
+
+
+
+
+
+#storeDetails  td, #storeDetails  th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+span + span {
+  margin-left: 50px;
+}
+
+#storeDetails {
+  background-color: rgb(242, 248, 186);
+  text-align: center;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  border: 3px solid #ddd;
+  width: 100%;
+  background-image: url("https://www.teahub.io/photos/full/8-80263_cool-blurry-image-background-1920x1080-simple.jpg");
+}
+
+
+#storeDetails  tr:nth-child(even){background-color: #f2f2f2;}
+
+#storeDetails  tr:hover {background-color: #ddd;}
+
+#storeDetails  th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #0c0c0c;
+  color: rgb(247, 248, 244);
+}
+
+#bgimage{
+  background-image: url("https://www.teahub.io/photos/full/8-80263_cool-blurry-image-background-1920x1080-simple.jpg");
+
+}

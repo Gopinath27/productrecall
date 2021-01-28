@@ -1,27 +1,21 @@
 .Login {
-  text-align: center;
-}
-  
-.Login-header {
-  background-color: #94a0a3;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(3px + 2vmin);
-  color: rgb(0, 0, 0);
-}
-
-.User-logo {
-  height: 20vmin;
-  pointer-events: none;
-}
-
-.Login-body {
-
- height: 100%; 
- background-position: center;
- background-repeat: no-repeat;
- background-size: cover;
-}
+    text-align: center;
+    
+  }
+    
+  .Login-header {
+    background-image: url("https://media.tegna-media.com/assets/WFAA/images/606890592/606890592_1920x1080.jpg");
+    position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-color: #dbdbdb;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(3px + 2vmin);
+    color: rgb(126, 83, 83);
+  }

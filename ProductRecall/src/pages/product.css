@@ -1,0 +1,74 @@
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    
+
+  }
+
+.h1-title {
+    color: rgb(12, 26, 41);
+    padding: 5px;
+    font-family: Arial;
+    text-align: center;
+    position: absolute;
+    top:2%;
+    left: 40%;
+  }
+
+  .MuiDataGrid-root .MuiDataGrid-colCellTitle {
+    font-weight: bold;
+  }
+
+.body {
+    color: rgb(0, 0, 0);
+    padding: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    background-image: url("https://www.teahub.io/photos/full/8-80263_cool-blurry-image-background-1920x1080-simple.jpg");
+  }
+
+  #storedetails {
+    text-align : center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    border: 3px solid #ddd;
+    height: 60px;
+    width: 100%;
+    background-color: rgb(154, 170, 111);
+    padding-top: 40px;
+    padding-bottom: 30px;
+  }
+
+  .button1{
+    position: absolute;
+    top:2%;
+    left: 48%;
+  }
+
+  .button2{
+    top:60%;
+    left: -16%;
+  }
+
+  .button3{
+    
+    top:60%;
+    left: 16%;
+  }
+
+#labestyle{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: inherit;
+  }
+
+  #outer
+  {
+      width:100%;
+      text-align: center;
+  }
+  .inner
+  {
+   display: inline-block;
+    
+  }
+  

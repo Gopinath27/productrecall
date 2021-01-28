@@ -1,0 +1,165 @@
+import React from 'react';
+import { Redirect } from 'react-router-dom';
+import {MuiThemeProvider} from "@material-ui/core/styles";
+import Button from '@material-ui/core/Button';
+import  '../App.css';
+import axios from 'axios';
+import { useHistory } from "react-router-dom";
+
+//import Table from './Table.jsx'
+export default class StoreDetailsPage extends React.Component {
+
+  
+  
+  constructor(props) {
+        super(props) //since we are extending class Table so we have to use super in order to override Component class constructor
+        this.state = { //state is by default an object
+            storeid:'',
+            productid:'',
+           tableheader: ['','StoreID','ProductID','ProductName','Quantity Available'],
+           checked: -1,
+           products:[],
+           selectedstoreid:'',
+           selectedproductid:'',
+           selectedproductname:'',
+           productdetails:[]
+
+        }
+        this.renderTableData = this.renderTableData.bind(this)
+        this.fetchStoreDetails=this.fetchStoreDetails.bind(this);
+        //var myObject = [] ; 
+      }
+      
+    storeChangeHandler = (e) => {
+        this.setState({storeid:e.target.value})
+    }
+  
+    productChangeHandler = (e) => {
+      this.setState({productid:e.target.value})
+    }
+
+    fetchStoreDetails()
+        {
+         var apiBaseUrl = "http://localhost:8080/";
+        
+         axios.get(apiBaseUrl+'fetchproduct', {
+           params:
+           {
+             "storeid" : this.state.storeid,
+             "productid": this.state.productid
+           }
+         })
+         .then(response=>{ this.infos= response.data ; 
+           var myObject = this.infos;
+           this.setState({ products: response.data})
+           console.log("reponse is" ,this.state.products)
+            //console.log("Products" + this.state.products[0].storeid); 
+          })
+         
+             
+        }
+
+        
+     
+        onChange(i){
+         this.setState({
+             checked:i
+         });
+         console.log('value of i'+i);
+        
+      }
+      
+      onChangeradio(product,i){
+        this.setState({
+            checked:i,
+            selectedstoreid:product.storeid,
+            selectedproductid:product.productid,
+            selectedproductname:product.productname
+        });
+        console.log('value of i'+i);
+        console.log('Value of product' +product.storeid)
+     }
+  
+     renderTableHeader() {
+      let list=[];
+      for(var i=0; i < this.state.tableheader.length;i++){
+       console.log('-----i---'+i);
+         console.log('--------'+this.state.tableheader[i]);
+         list.push(<th id={this.state.tableheader[i]}>{this.state.tableheader[i]}</th>);
+      }     
+      return list;
+     }
+     renderTableData() {
+      //const history = {​​​​​ useHistory }​​​​​;
+      var apiBaseUrl = "http://localhost:8080/";
+      axios.get(apiBaseUrl+'viewproduct', {
+        params:
+        {
+          "storeid" : this.state.selectedstoreid,
+          "productid": this.state.selectedproductid
+        }
+      })
+      .then(response=>{ 
+        console.log(response.data);
+        if (response.status == 200) {
+          console.log("Got the response" +this.state.productdetails);
+          this.setState({ productdetails: response.data})
+          this.props.history.push({pathname:'/login/product', state:{data: this.state.productdetails}})
+        }
+            
+        }
+       
+       )
+      
+         
+    }
+      
+     
+  
+     render() {
+        return (
+         <MuiThemeProvider>
+             <div>
+                    <h3 align="center"> STORE DETAILS </h3>
+                </div>
+            <div id='storedetails'>
+                
+            <div> 
+               <span><label>Store ID </label><input type="text" ref="storeid" value={this.state.storeid}
+             onChange = {this.storeChangeHandler}></input></span>
+               <span><label>Product ID </label><input type="text" ref="productid" value={this.state.productid}
+             onChange = {this.productChangeHandler}></input></span>
+            </div><br/>
+            <div><Button onClick={this.fetchStoreDetails} variant="contained" color="danger">Fetch Product Details</Button></div>
+            </div>
+           <div>
+           <table id='storeDetails'>
+              <thead>
+            <tr>{this.renderTableHeader()}</tr>
+             </thead>
+                 <tbody>
+                    
+                    { (this.state.products.length > 0) ? this.state.products.map( (product, index) => {
+                       return (
+                           <tr key={ index }>
+                           <td><input type="radio" value={product}
+                                      checked={this.state.checked == index? true: false}
+                                      onChange={this.onChangeradio.bind(this,product,index)} ></input></td>
+                           <td>{ product.storeid }</td>
+                           <td>{ product.productid }</td>
+                           <td>{ product.productname}</td>
+                           <td>{ product.quantity }</td>
+              
+            </tr>
+          )
+         }) : <tr><td colSpan="5">Loading...</td></tr> }
+                 </tbody>
+              </table>
+           </div> <br/>
+           <div id='storeDetails'>
+           <Button onClick={this.renderTableData} variant="contained" color="default" align="center">View Product Details</Button>
+           </div>
+           </MuiThemeProvider>
+        )
+     }
+}
