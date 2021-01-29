@@ -71,4 +71,26 @@
    display: inline-block;
     
   }
-  
+
+  .product-header{
+  position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-style: oblique;
+    font-size: calc(7px + 2vmin);
+    font-variant-position: unset;
+    color: rgb(9, 5, 51);
+    background-image: url("https://www.teahub.io/photos/full/8-80263_cool-blurry-image-background-1920x1080-simple.jpg");
+    }
+
+  .bgimageprod{
+    background-image: url("https://www.teahub.io/photos/full/8-80263_cool-blurry-image-background-1920x1080-simple.jpg");
+  }

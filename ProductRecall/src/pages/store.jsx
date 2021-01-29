@@ -51,7 +51,6 @@ export default class StoreDetailsPage extends React.Component {
         this.infos = response.data;
         var myObject = this.infos;
         this.setState({ products: response.data })
-        console.log("reponse is", this.state.products)
 
       })
 
@@ -64,7 +63,7 @@ export default class StoreDetailsPage extends React.Component {
     this.setState({
       checked: i
     });
-    console.log('value of i' + i);
+
 
   }
 
@@ -75,15 +74,12 @@ export default class StoreDetailsPage extends React.Component {
       selectedproductid: product.productid
 
     });
-    console.log('value of i' + i);
-    console.log('Value of product' + product.storeid)
+
   }
 
   renderTableHeader() {
     let list = [];
     for (var i = 0; i < this.state.tableheader.length; i++) {
-      console.log('-----i---' + i);
-      console.log('--------' + this.state.tableheader[i]);
       list.push(<th id={this.state.tableheader[i]}>{this.state.tableheader[i]}</th>);
     }
     return list;
@@ -99,11 +95,7 @@ export default class StoreDetailsPage extends React.Component {
         }
       })
         .then(response => {
-          console.log("Response status (VIEW button) : " + response.status);
-          console.log("Response data : " + response.data);
           if (response.status == 200 && (typeof response.data !== undefined) && response.data !== null) {
-            console.log("Response ARRAY : " + response.data);
-            console.log("Got the response : " + this.state.productdetails);
             this.setState({ productdetails: response.data })
             this.props.history.push({ pathname: '/login/product', state: { data: this.state.productdetails } })
 
